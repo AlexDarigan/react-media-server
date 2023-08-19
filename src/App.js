@@ -1,22 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import ReactPlayer from 'react-player';
+import { useEffect, useState } from 'react';
+import ResizeErrorHandler from './ResizeObserrverErrHandler';
+import OnKeyEvent from './KeyEvent';
+import Videos from "./videos.json"
 
 function App() {
+
+  const [key, setKey] = useState("");
+
+  useEffect(OnKeyEvent("keydown", (e) => setKey(e.key)))
+  useEffect(ResizeErrorHandler);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <br/>
+        <p>Key Pressed: {key} </p>
+        <ReactPlayer url={Videos.spiderman} controls/>
       </header>
     </div>
   );
