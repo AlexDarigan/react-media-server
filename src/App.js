@@ -3,10 +3,11 @@ import ReactPlayer from 'react-player';
 import { useEffect, useState } from 'react';
 import ResizeErrorHandler from './ResizeObserrverErrHandler';
 import OnKeyEvent from './KeyEvent';
-import Videos from "./videos.json"
+import Videos from "./videos.json";
+import List from './List';
+import logo from "./logo.svg"
 
 function App() {
-
   const [key, setKey] = useState("");
 
   useEffect(OnKeyEvent("keydown", (e) => setKey(e.key)))
@@ -17,10 +18,17 @@ function App() {
       <header className="App-header">
         <br/>
         <p>Key Pressed: {key} </p>
-        <ReactPlayer url={Videos.spiderman} controls/>
+        {Object.values(Videos).map(category =>
+          <List 
+            title={category.category} 
+            shows={category.shows} 
+            key={category.category}></List>
+        )}
       </header>
     </div>
   );
 }
+
+
 
 export default App;

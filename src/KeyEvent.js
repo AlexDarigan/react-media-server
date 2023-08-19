@@ -1,5 +1,3 @@
-
-
 function OnKeyEvent(event, callback) {
     const onEvent = (e) => {
         callback(e);

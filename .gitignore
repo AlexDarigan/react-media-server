@@ -2,6 +2,7 @@
 
 # media
 /public/videos
+/public/images
 videos.json
 
 # dependencies
